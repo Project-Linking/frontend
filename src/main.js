@@ -1,4 +1,25 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import MainComponent from "./components/main/MainComponent.vue";
+import NotFound from "./components/global/NotFound.vue";
+import LoginComponent from "./components/login/LoginComponent.vue";
+import axios from "axios";
 
-createApp(App).mount('#app')
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: "/", component: MainComponent },
+    { path: "/login-page", component: LoginComponent },
+    {
+      path: "/:notFound(.*)",
+      component: NotFound,
+    },
+  ],
+});
+
+const app = createApp(App);
+app.use(axios);
+app.use(router);
+app.mount("#app");
+app.config.globalProperties.axios = axios;
