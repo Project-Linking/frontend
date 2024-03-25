@@ -2,12 +2,21 @@
   <div class="container">
     <section class="social-login">
       <h2 class="title">소셜로그인</h2>
-      <button class="image-button" @click="loginKakao()">
+      <!-- <button class="image-button" @click="loginKakao">
         <img src="../../assets/kakao_login.png" />
-      </button>
-      <button class="image-button">
+      </button> -->
+      <a
+        class="image-button"
+        href="http://localhost:8080/oauth2/authorization/kakao"
+      >
+        <img src="../../assets/kakao_login.png" />
+      </a>
+      <a
+        class="image-button"
+        href="http://localhost:8080/oauth2/authorization/naver"
+      >
         <img src="../../assets/naver_login.png" />
-      </button>
+      </a>
     </section>
     <div class="divider-container">
       <hr class="section-divider" />
@@ -21,15 +30,18 @@
 <script>
 export default {
   methods: {
-    loginKakao() {
-      this.axios
-        .get("http://localhost:8080/oauth2/authorization/kakao")
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    async loginKakao() {
+      await fetch("http://localhost:8080/oauth2/authorization/kakao", {
+        method: "GET",
+      });
+      // this.axios
+      //   .get("http://localhost:8080/oauth2/authorization/kakao")
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((res) => {
+      //     console.log(res);
+      //   });
     },
   },
 };
@@ -50,7 +62,7 @@ export default {
   align-items: center;
   height: 50vh; /* 화면의 높이를 100%로 설정하여 화면 전체를 차지하도록 합니다. */
 }
-button {
+a {
   display: block;
 }
 .image-button {

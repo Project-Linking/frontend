@@ -19,7 +19,6 @@ const router = createRouter({
 });
 
 const app = createApp(App);
-app.use(axios);
 app.use(router);
-app.mount("#app");
 app.config.globalProperties.axios = axios;
+app.mount("#app");
