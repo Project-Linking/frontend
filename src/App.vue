@@ -25,5 +25,6 @@ html {
 
 body {
   margin: 0;
+  background-color: #f6f6f6;
 }
 </style>

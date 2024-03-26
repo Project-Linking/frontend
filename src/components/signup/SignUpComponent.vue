@@ -37,7 +37,7 @@ export default {
           nickname: this.nickname,
         })
         .then(() => {
-          this.$router.push({ path: "/login-page" });
+          this.$router.push({ path: "/login" });
         });
     },
   },

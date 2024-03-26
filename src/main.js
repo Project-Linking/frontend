@@ -1,24 +1,27 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import MainComponent from "./components/main/MainComponent.vue";
-import NotFound from "./components/global/NotFound.vue";
-import LoginComponent from "./components/login/LoginComponent.vue";
-import SignUpComponent from "./components/signup/SignUpComponent.vue";
 import axios from "axios";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: MainComponent },
-    { path: "/login-page", component: LoginComponent },
     {
-      path: "/sign-up",
-      component: SignUpComponent,
+      path: "/",
+      component: () => import("./components/main/MainComponent.vue"),
+    },
+
+    {
+      path: "/login",
+      component: () => import("./components/login/LoginComponent.vue"),
     },
     {
-      path: "/:notFound(.*)",
-      component: NotFound,
+      path: "/sign-up",
+      component: () => import("./components/signup/SignUpComponent.vue"),
+    },
+    {
+      path: "/:notFound(.*)*",
+      component: () => import("./components/global/NotFound.vue"),
     },
   ],
 });

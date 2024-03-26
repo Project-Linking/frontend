@@ -7,7 +7,7 @@
       <div class="navbar-menu">
         <ul>
           <li>
-            <router-link to="/login-page">로그인</router-link>
+            <router-link to="/login">로그인</router-link>
           </li>
         </ul>
       </div>
