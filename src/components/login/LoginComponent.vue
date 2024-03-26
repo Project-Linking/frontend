@@ -1,10 +1,23 @@
 <template>
   <div class="container">
+    <section>
+      <div>
+        <h2>로그인</h2>
+        <form @submit.prevent="signupSubmit">
+          <div>
+            <label for="loginId">아이디:</label>
+            <input type="text" id="loginId" v-model="loginId" required />
+          </div>
+          <div>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" v-model="password" required />
+          </div>
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </section>
     <section class="social-login">
       <h2 class="title">소셜로그인</h2>
-      <!-- <button class="image-button" @click="loginKakao">
-        <img src="../../assets/kakao_login.png" />
-      </button> -->
       <a
         class="image-button"
         href="http://localhost:8080/oauth2/authorization/kakao"
@@ -22,29 +35,13 @@
       <hr class="section-divider" />
     </div>
     <section>
-      <button class="sign-up" height="">회원가입</button>
+      <router-link class="image-button" to="/sign-up">회원가입</router-link>
     </section>
   </div>
 </template>
 
 <script>
-export default {
-  methods: {
-    async loginKakao() {
-      await fetch("http://localhost:8080/oauth2/authorization/kakao", {
-        method: "GET",
-      });
-      // this.axios
-      //   .get("http://localhost:8080/oauth2/authorization/kakao")
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((res) => {
-      //     console.log(res);
-      //   });
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainComponent from "./components/main/MainComponent.vue";
 import NotFound from "./components/global/NotFound.vue";
 import LoginComponent from "./components/login/LoginComponent.vue";
+import SignUpComponent from "./components/signup/SignUpComponent.vue";
 import axios from "axios";
 
 const router = createRouter({
@@ -11,6 +12,10 @@ const router = createRouter({
   routes: [
     { path: "/", component: MainComponent },
     { path: "/login-page", component: LoginComponent },
+    {
+      path: "/sign-up",
+      component: SignUpComponent,
+    },
     {
       path: "/:notFound(.*)",
       component: NotFound,
